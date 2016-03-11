@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns:tizen="http://tizen.org/ns/widgets" xmlns="http://www.w3.org/ns/widgets" id="https://notabug.org/tizen/mapo" version="2.0.0" viewmodes="fullscreen">
     <access origin="*" subdomains="true"></access>
-    <tizen:application id="mapo000001.mapo" package="mapo000001" required_version="2.3"/>
+    <tizen:application id="mapo000001.mapo" package="mapo000001" required_version="2.2"/>
     <author href="https://notabug.org/tizen/mapo" email="rzr@gna.org">Philippe Coval</author>
     <content src="index.html"/>
     <description>Mapo is a geolocation application for the Tizen OS, developed with HTML5/CSS3 an jQuery.
