@@ -26,6 +26,6 @@ This application is under GPL-3.0p license.</description>
     <tizen:privilege name="http://tizen.org/privilege/contact.write"/>
     <tizen:privilege name="http://tizen.org/privilege/calendar.read"/>
     <tizen:privilege name="http://tizen.org/privilege/calendar.write"/>
-    <tizen:profile name="mobile"/>
+    <tizen:profile name="tv"/>
     <tizen:setting screen-orientation="portrait" context-menu="enable" background-support="disable" encryption="disable" install-location="auto" hwkey-event="enable"/>
 </widget>
