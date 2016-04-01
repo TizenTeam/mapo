@@ -662,13 +662,11 @@ function fromLatLonToTag(lat, lon) {
  *            DMS coordinate
  */
 function setDMS(input) {
-	input = input.replace('°', 'd').replace('\'', 'm'), replace('"', s);
-	setTag(input);
-}
 
-function setTag(input) {
-	var re = /^#([NS])([0-9.\-]+)d([0-9.\-]+)m([0-9.\-]+)s([EW])([0-9.\-]+)d([0-9.\-]+)m([0-9.\-]+)s$/;
+	var re = /^([NS])\s*([0-9.\-]+)\s*°\s*([0-9.\-]+)\s*\'\s*([0-9.\-]+)\s*\"\s*([EW])\s*([0-9.\-]+)\s*°\s*([0-9.\-]+)\s*\'\s*([0-9.\-]+)\s*\"\s*$/;
 	if (re.test(input)) {
+	    log("setTag: ok " + input );
+
 		var lat = (parseFloat(RegExp.$2) + parseFloat(RegExp.$3) / 60 + parseFloat(RegExp.$4)
 				/ (60 * 60)).toFixed(6);
 		if (RegExp.$1 == 'S') {
@@ -687,6 +685,36 @@ function setTag(input) {
 
 		refresh();
 	}
+}
+
+/** @arg input : string in this form : N28d7m11sW1d37m48s **/
+function setTag(input) {
+	var res;
+
+	var re = /^#([NS])([0-9.\-]+)d([0-9.\-]+)m([0-9.\-]+)s([EW])([0-9.\-]+)d([0-9.\-]+)m([0-9.\-]+)s$/;
+
+	res = re.test(input);
+	if (res) {
+
+		var lat = (parseFloat(RegExp.$2) + parseFloat(RegExp.$3) / 60 + parseFloat(RegExp.$4)
+				/ (60 * 60)).toFixed(6);
+		if (RegExp.$1 == 'S') {
+			lat = -lat;
+		}
+		lat = lat.toString();
+		setLat(lat);
+
+		var lon = (parseFloat(RegExp.$6) + parseFloat(RegExp.$7) / 60 + parseFloat(RegExp.$8)
+				/ (60 * 60)).toFixed(6);
+		if (RegExp.$5 == 'W') {
+			lon = -lon;
+		}
+		lon = lon.toString();
+		setLon(lon);
+
+		refresh();
+	}
+    return res;
 }
 /*
  * Coordinates Manager
@@ -715,14 +743,10 @@ function setLatLon() {
  *            DMS coordinates
  * @returns Validation
  */
-function validateDMS(dms) {
-	var re = /^([NS])\s*([0-9.\-]+)\s*°\s*([0-9.\-]+)\s*\'\s*([0-9.\-]+)\s*\"\s*([EW])\s*([0-9.\-]+)\s*°\s*([0-9.\-]+)\s*\'\s*([0-9.\-]+)\s*\"\s*$/;
-	if (re.test(dms)) {
-		return true;
-	} else {
-		return false;
-	}
-}
+function validateDMS(input) {
+	var re = /^([NS])\s*([0-9.\-]+)\s*[°ºDd]\s*([0-9.\-]+)\s*\'\s*([0-9.\-]+)\s*\"\s*([EW])\s*([0-9.\-]+)\s*[°ºDd]\s*([0-9.\-]+)\s*\'\s*([0-9.\-]+)\s*\"\s*$/;
+   return (re.test(input));
+} //TODO: merge with setDMS
 
 /**
  * Validate or not the latitudes and longitudes coordinates according to the
