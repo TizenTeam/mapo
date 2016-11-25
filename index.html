@@ -62,6 +62,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 			<div data-role="navbar">
 				<ul>
 					<li><a href="#position" class="ui-btn-active ui-state-persist">Position</a></li>
+					<li><a href="#snap">Snap</a></li>
 					<li><a href="#map">Map</a></li>
 					<li><a href="#settings">Settings</a></li>
 					<li><a href="#about">About</a></li>
@@ -137,7 +138,48 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	<!-- /page #position-->
 
 
-	<!-- Page 2 : Search a place -->
+	<!-- Page 2 : Snap a picture -->
+	<div data-role="page" id="snap" class="ui-page">
+		<div data-role="header" data-id="myHeader" data-position="fixed">
+			<a href="javascript:void(0);" data-role="button"
+				onclick="getLocation(true)" id="home" class="ui-btn-left"
+				data-mini="true" data-icon="home">Update</a>
+			<h1 class="ui-title">MAPO</h1>
+			<a data-role="button" id="exit" class="ui-btn-right-mini"
+				data-icon="delete" onclick="quit()">Exit</a>
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#position">Position</a></li>
+					<li><a href="#snap" class="ui-btn-active ui-state-persist">Snap</a></li>
+					<li><a href="#map">Map</a></li>
+					<li><a href="#settings">Settings</a></li>
+					<li><a href="#about">About</a></li>
+				</ul>
+			</div>
+			<!-- /navbar -->
+		</div>
+		<!-- /header -->
+
+		<div data-role="content">
+			<rame src="https://davidwalsh.name/demo/camera.php"/>
+		
+			<video id="video" width="320" height="240" autoplay></video>
+			<button id="snap" class="sexyButton">Snap Photo</button>
+			<div id="snap_filename" >File: - </div>
+			<canvas id="canvas" width="320" height="240"></canvas>
+			<script src="js/tizen/snap2.js" type="text/javascript"></script>
+	
+		</div>
+		<!-- /content -->
+
+		<div data-role="footer" data-id="myFooter" data-position="fixed">
+			Copyleft: GPL-3.0+ : http://notabug.org/tizen/mapo</div>
+		<!-- /footer -->
+	</div>
+	<!-- /page #position-->
+
+
+	<!-- Page32 : Search a place -->
 	<div data-role="page" id="map" class="ui-page">
 		<div data-role="header" data-id="myHeader" data-position="fixed">
 			<a href="javascript:void(0);" data-role="button"
@@ -149,6 +191,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 			<div data-role="navbar">
 				<ul>
 					<li><a href="#position">Position</a></li>
+					<li><a href="#snap">Snap</a></li>
 					<li><a href="#map" class="ui-btn-active ui-state-persist">Map</a></li>
 					<li><a href="#settings">Settings</a></li>
 					<li><a href="#about">About</a></li>
@@ -173,7 +216,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	<!-- /page #place-->
 
 
-	<!-- Page 3 : Settings -->
+	<!-- Page 4 : Settings -->
 	<div data-role="page" id="settings" class="ui-page">
 		<div data-role="header" data-id="myHeader" data-position="fixed">
 			<a href="javascript:void(0);" data-role="button"
@@ -184,7 +227,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 				data-icon="delete" onclick="quit()">Exit</a>
 			<div data-role="navbar">
 				<ul>
-					<li><a href="#position">Position</a></li>
+					</li><li><a href="#position">Position</a></li>
+					<li><a href="#snap">Snap</a>
 					<li><a href="#map">Map</a></li>
 					<li><a href="#settings" class="ui-btn-active ui-state-persist">Settings</a></li>
 					<li><a href="#about">About</a></li>
@@ -249,7 +293,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	<!-- /page #options-->
 
 
-	<!-- Page 4 : about -->
+	<!-- Page 5 : about -->
 	<div data-role="page" id="about" class="ui-page">
 		<div data-role="header" data-id="myHeader" data-position="fixed">
 			<a href="javascript:void(0);" data-role="button"
@@ -261,6 +305,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 			<div data-role="navbar">
 				<ul>
 					<li><a href="#position">Position</a></li>
+					<li><a href="#snap">Snap</a>
 					<li><a href="#map">Map</a></li>
 					<li><a href="#settings">Settings</a></li>
 					<li><a href="#about" class="ui-btn-active ui-state-persist">About</a></li>

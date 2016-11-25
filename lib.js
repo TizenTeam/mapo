@@ -886,10 +886,23 @@ function updateMapCenter(position) {
 
 }
 
+// Gestion debug
+
+// - mode: a modifier par js, par bouton ...
+var debugMode = 'alert';
+
+// - debug
+function debug(text) {
+	if ( debugMode==="console" ) {
+		console.error(text);
+	} 	else if ( debugMode==="alert" ) {
+		alert("debug: "+ text);
+	}
+}
+
 /*
  * Recording manager
  */
-
 /**
  * Function called when the file resolution succeded Create the recording file
  * in the corresponding directory
